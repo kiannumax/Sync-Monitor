@@ -1,10 +1,10 @@
-from machine import Pin, I2C, reset, ADC
+from machine import Pin, I2C, ADC
 from ssd1306 import SSD1306_I2C
 from time import ticks_ms
 from fifo import Fifo
 from led import Led
 
-
+# Rotary encoder class
 class Encoder:
     def __init__(self, rot_a, rot_b, btn):
        self.a = Pin(rot_a, mode = Pin.IN, pull = Pin.PULL_UP)
@@ -19,7 +19,7 @@ class Encoder:
             
     def btn_handler(self, pin):
         curr_tick = ticks_ms()
-    
+        # To prevent unwanted handles of clicks
         if curr_tick - self.prev_tick > 50:
             self.fifo.put(2)
         
@@ -29,14 +29,15 @@ class Encoder:
     def handler(self, pin):       
         if self.b():
             self.fifo.put(-1)
-        
+
         else:
             self.fifo.put(1)
             
-            
+# Initialize oled
 i2c  = I2C(1, scl = Pin(15), sda = Pin(14), freq = 400000)
 oled = SSD1306_I2C(128, 64, i2c)
 
+# Initialize all required components
 sensor = ADC(Pin(26))
 LED    = Led(20, Pin.OUT)
 rot    = Encoder(10, 11, 12)

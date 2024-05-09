@@ -1,3 +1,4 @@
+'''Main file which runs automatically when Raspberry Pico powers on'''
 from machine import Pin, reset
 from framebuf import FrameBuffer, MONO_HLSB
 from time import sleep
@@ -7,24 +8,23 @@ from logo import logo
 from components import oled, LED
 from connections import mqtt
 
-                              
+# Reset led and oled just in case
 oled.fill(0)
 LED.off()
-
+# Show bitmap logo while connecting to wifi and mqtt are being established
 boot_logo = FrameBuffer(logo, 128, 64, MONO_HLSB)
 oled.blit(boot_logo, 0, 0)
 oled.show()
-sleep(3)
 
 connection = True
-try:
+try: # Try connecting
     mqtt.connect_wlan()
     mqtt.connect_mqtt()
     
-except Exception as e:
+except Exception as e: # If fails set connection state to False
     connection = False
     
-if connection:
+if connection: # If connection successful show the message for 5s and call the menu function
     for i in range(5, 0, -1):
         oled.fill(0)
         
@@ -38,7 +38,7 @@ if connection:
         
     import main_menu
     
-else:
+else: # If connection failed show the message for 5s and reboot
     for i in range(5, 0, -1):
         oled.fill(0)
         
