@@ -1,4 +1,0 @@
-{"pns": -0.4, "date": "9-5-2024 19:21", "sdnn": 103, "sns": 1.7, "mean_ppi": 648, "type": "kubios", "rmssd": 88, "mean_hr": 93}
-{"pns": -0.89, "date": "9-5-2024 19:21", "sdnn": 31, "sns": 1.72, "mean_ppi": 760, "type": "kubios", "rmssd": 33, "mean_hr": 79}
-{"sdnn": 114, "rmssd": 110, "type": "hrv", "date": "9-5-2024 19:53", "mean_ppi": 838, "mean_hr": 72}
-{"pns": 0.25, "date": "9-5-2024 19:54", "sdnn": 62, "sns": 0.6, "mean_ppi": 774, "type": "kubios", "rmssd": 71, "mean_hr": 77}

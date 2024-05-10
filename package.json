@@ -2,7 +2,7 @@
   "urls": [
     ["main.py", "http://localhost:8000/main.py"],
     ["analysis.py", "http://localhost:8000/analysis.py"],
-    ["components.py", "http://localhost:8000/compontets.py"],
+    ["components.py", "http://localhost:8000/components.py"],
     ["connections.py", "http://localhost:8000/connections.py"],
     ["history.py", "http://localhost:8000/history.py"],
     ["history.txt", "http://localhost:8000/history.txt"],
