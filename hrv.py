@@ -60,20 +60,22 @@ def hrv_analysis():
         problem_message(True) # Display the corresponding message
         return # And return to menu when encoder button was pressed
     
-    
+    failure = False
     try: # Try sending message to mqtt
          mqtt.send_message(data)
     
     except Exception as e: # If issue display the corresponding message
         problem_message(False)
+        failure = True
         
-    # Show message of successful sending for 4s
-    oled.fill(0)
-    oled.text("Message send", 15, 0)
-    oled.text("Successful!", 20, 10)
+    # Show message of successful sending for 4s if not failure
+    if not failure:
+        oled.fill(0)
+        oled.text("Message send", 15, 0)
+        oled.text("Successful!", 20, 10)
     
-    oled.show()
-    sleep(4)
+        oled.show()
+        sleep(4)
 
     # 0 or 1 for save and quit
     hovered_option = 0
